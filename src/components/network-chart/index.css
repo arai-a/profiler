@@ -40,6 +40,12 @@
   }
 }
 
+@media (prefers-contrast: more) {
+  .networkChartRowItemBar {
+    outline: 1px dotted var(--base-border-color);
+  }
+}
+
 .networkChartRowItem.odd {
   background-color: var(--row-odd-background-color);
 }
@@ -83,6 +89,42 @@
   position: absolute;
   height: 100%;
   background-color: var(--marker-color);
+}
+
+.networkChartRowItemBarPhase.opacity0,
+.networkChartRowItemBarPhase.domainLookupStart {
+  opacity: 0;
+}
+
+.networkChartRowItemBarPhase.requestStart {
+  opacity: 0.33;
+}
+
+.networkChartRowItemBarPhase.responseStart {
+  opacity: 0.67;
+}
+
+.networkChartRowItemBarPhase.responseEnd,
+.networkChartRowItemBarPhase.opacity1 {
+  opacity: 1;
+}
+
+@media (prefers-contrast: more) {
+  .networkChartRowItemBarPhase.requestStart {
+    background-color: SelectedItem !important;
+    opacity: 1;
+  }
+
+  .networkChartRowItemBarPhase.responseStart {
+    background-color: SelectedItemText !important;
+    opacity: 1;
+  }
+
+  .networkChartRowItemBarPhase.responseEnd,
+  .networkChartRowItemBarPhase.opacity1 {
+    background-color: ActiveText !important;
+    opacity: 1;
+  }
 }
 
 .networkChartRowItemUriOptional {

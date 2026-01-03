@@ -75,20 +75,13 @@ const PHASE_NAMES_IN_ORDER: NetworkPhaseName[] = [
   'responseEnd',
 ];
 
-const PHASE_OPACITIES = PHASE_NAMES_IN_ORDER.reduce(
-  (result, property, i, { length }) => {
-    (result as any)[property] = length > 1 ? i / (length - 1) : 0;
-    return result;
-  },
-  {} as { [key: string]: number }
-);
-
 type NetworkPhaseProps = {
   readonly name: NetworkPhaseName;
   readonly previousName: NetworkPhaseName;
   readonly value: number | string;
   readonly duration: Milliseconds;
   readonly style: React.CSSProperties;
+  readonly className: string;
 };
 
 function NetworkPhase({
@@ -97,11 +90,12 @@ function NetworkPhase({
   value,
   duration,
   style,
+  className,
 }: NetworkPhaseProps) {
   // Specifying data attributes makes it easier to debug.
   return (
     <div
-      className="networkChartRowItemBarPhase"
+      className={classNames('networkChartRowItemBarPhase', className)}
       key={name}
       data-name={name}
       data-value={value}
@@ -191,8 +185,8 @@ class NetworkChartRowBar extends React.PureComponent<NetworkChartRowBarProps> {
       style: {
         left: 0,
         width: '100%',
-        opacity: PHASE_OPACITIES.requestStart,
       },
+      className: 'requestStart',
     };
 
     return (
@@ -248,8 +242,8 @@ class NetworkChartRowBar extends React.PureComponent<NetworkChartRowBarProps> {
           left: ((previousValue - start) / dur) * markerWidth,
           width: Math.max(((value - previousValue) / dur) * markerWidth, 1),
           // The first phase is always transparent because this represents the wait time.
-          opacity: i === 0 ? 0 : PHASE_OPACITIES[phase],
         },
+        className: i === 0 ? 'opacity0' : phase,
       });
       previousValue = value;
       previousName = phase;
@@ -265,8 +259,8 @@ class NetworkChartRowBar extends React.PureComponent<NetworkChartRowBarProps> {
       style: {
         left: ((previousValue - start) / dur) * markerWidth,
         width: ((start + dur - previousValue) / dur) * markerWidth,
-        opacity: mainBarPhases.length ? 0 : 1,
       },
+      className: mainBarPhases.length ? 'opacity0' : 'opacity1',
     });
 
     return (
