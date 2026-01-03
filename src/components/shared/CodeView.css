@@ -62,6 +62,13 @@
   }
 }
 
+@media (prefers-contrast: more) {
+  .codeView {
+    --codeview-nonzero-background-color: SelectedItem;
+    --codeview-highlight-background-color: SelectedItem;
+  }
+}
+
 .codeViewHeader {
   display: flex;
   height: 16px;
