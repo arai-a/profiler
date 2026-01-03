@@ -154,6 +154,16 @@
   }
 }
 
+@media (prefers-contrast: more) {
+  .sidebar-histogram-bar {
+    outline: 1px dotted var(--base-border-color);
+  }
+
+  .sidebar-histogram-bar-color {
+    background-color: SelectedItem !important;
+  }
+}
+
 .sidebar-histogram-bar-color {
   height: 5px;
 }
