@@ -38,6 +38,12 @@
   background-color: var(--vertical-indicator-color);
 }
 
+@media (prefers-contrast: more) {
+  .timelineVerticalIndicatorsLine::after {
+    --vertical-indicator-color: ActiveText;
+  }
+}
+
 .timelineVerticalIndicatorsDim {
   --internal-foreground-color: var(--grey-50);
 
