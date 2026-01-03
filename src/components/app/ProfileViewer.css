@@ -155,3 +155,13 @@
     animation: none;
   }
 }
+
+@media (prefers-contrast: more) {
+  .splitter-layout .layout-splitter {
+    background: CanvasText;
+  }
+
+  .splitter-layout .layout-splitter:hover {
+    background: Highlight;
+  }
+}

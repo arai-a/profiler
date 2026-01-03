@@ -40,6 +40,12 @@
   background-color: var(--base-border-color) !important;
 }
 
+@media (prefers-contrast: more) {
+  .bottom-box .layout-splitter {
+    background-color: CanvasText !important;
+  }
+}
+
 /* Provide 3px extra grabbable surface on each side of the splitter */
 .bottom-box .layout-splitter::before {
   position: absolute;

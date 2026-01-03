@@ -24,3 +24,13 @@
 .DetailsContainer .layout-splitter:hover {
   background: var(--panel-background-color);
 }
+
+@media (prefers-contrast: more) {
+  .DetailsContainer .layout-splitter {
+    background: CanvasText;
+  }
+
+  .DetailsContainer .layout-splitter:hover {
+    background: Highlight;
+  }
+}
