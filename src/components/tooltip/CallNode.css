@@ -66,6 +66,12 @@
   background: var(--internal-graph-meter-background-color);
 }
 
+@media (prefers-contrast: more) {
+  .tooltipCallNodeGraphMeter {
+    outline: 1px dotted var(--base-border-color);
+  }
+}
+
 /* This is the bar inside the meter. */
 .tooltipCallNodeGraphMeterBar {
   height: 100%;
@@ -74,6 +80,12 @@
   /* Some colors don't have enough contrast (yellow for JavaScript, white for
    * Idle), therefore adding a border improves accessibility. */
   border-inline-end: 1px solid var(--internal-graph-meter-border-color);
+}
+
+@media (prefers-contrast: more) {
+  .tooltipCallNodeGraphMeterBar {
+    background-color: SelectedItem !important;
+  }
 }
 
 .tooltipCallNodeCategory .tooltipCategoryRowHeader {
