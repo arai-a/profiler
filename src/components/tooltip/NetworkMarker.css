@@ -47,12 +47,6 @@
   background-color: var(--marker-color);
 }
 
-.tooltipNetworkPhaseEmpty {
-  background-color: var(--base-background-color);
-  box-shadow: 0 0 0 1px inset var(--marker-color);
-  opacity: 0.5;
-}
-
 .tooltipNetworkMimeType {
   display: flex;
   align-items: center;
@@ -60,4 +54,60 @@
 
 .tooltipNetworkMimeTypeSwatch {
   background-color: var(--marker-color);
+}
+
+.tooltipNetworkPhase.startTime,
+.tooltipNetworkPhase.responseEnd,
+.tooltipNetworkPhase.endTime {
+  background-color: var(--base-background-color);
+  box-shadow: 0 0 0 1px inset var(--marker-color);
+  opacity: 0.5;
+}
+
+.tooltipNetworkPhase.domainLookupStart,
+.tooltipNetworkPhase.domainLookupEnd,
+.tooltipNetworkPhase.connectStart,
+.tooltipNetworkPhase.tcpConnectEnd,
+.tooltipNetworkPhase.secureConnectionStart,
+.tooltipNetworkPhase.connectEnd {
+  opacity: 0.5;
+}
+
+.tooltipNetworkPhase.requestStart {
+  opacity: 0.75;
+}
+
+.tooltipNetworkPhase.responseStart,
+.tooltipNetworkPhase.opacity1 {
+  opacity: 1;
+}
+
+@media (prefers-contrast: more) {
+  .tooltipNetworkPhase.startTime,
+  .tooltipNetworkPhase.responseEnd,
+  .tooltipNetworkPhase.endTime {
+    background-color: SelectedItem !important;
+    opacity: 1;
+  }
+
+  .tooltipNetworkPhase.domainLookupStart,
+  .tooltipNetworkPhase.domainLookupEnd,
+  .tooltipNetworkPhase.connectStart,
+  .tooltipNetworkPhase.tcpConnectEnd,
+  .tooltipNetworkPhase.secureConnectionStart,
+  .tooltipNetworkPhase.connectEnd {
+    background-color: SelectedItem !important;
+    opacity: 1;
+  }
+
+  .tooltipNetworkPhase.requestStart {
+    background-color: SelectedItemText !important;
+    opacity: 1;
+  }
+
+  .tooltipNetworkPhase.responseStart,
+  .tooltipNetworkPhase.opacity1 {
+    background-color: ActiveText !important;
+    opacity: 1;
+  }
 }

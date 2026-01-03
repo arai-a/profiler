@@ -50,20 +50,6 @@ const HUMAN_LABEL_FOR_PHASE: Record<NetworkPhaseName, string> = {
   endTime: 'End',
 };
 
-const OPACITY_FOR_PHASE: Record<NetworkPhaseName, number> = {
-  startTime: 0,
-  domainLookupStart: 0.5,
-  domainLookupEnd: 0.5,
-  connectStart: 0.5,
-  tcpConnectEnd: 0.5,
-  secureConnectionStart: 0.5,
-  connectEnd: 0.5,
-  requestStart: 0.75,
-  responseStart: 1,
-  responseEnd: 0,
-  endTime: 0,
-};
-
 type NetworkPhaseProps = {
   readonly propertyName: NetworkPhaseName;
   readonly dur: Milliseconds;
@@ -76,7 +62,6 @@ class NetworkPhase extends React.PureComponent<NetworkPhaseProps> {
     const { startPosition, dur, propertyName, phaseDuration } = this.props;
     const startPositionPercent = (startPosition / dur) * 100;
     const durationPercent = Math.max(0.3, (phaseDuration / dur) * 100);
-    const opacity = OPACITY_FOR_PHASE[propertyName];
 
     return (
       <React.Fragment>
@@ -93,14 +78,11 @@ class NetworkPhase extends React.PureComponent<NetworkPhaseProps> {
           {formatMilliseconds(phaseDuration)}
         </div>
         <div
-          className={classNames('tooltipNetworkPhase', {
-            tooltipNetworkPhaseEmpty: opacity === 0,
-          })}
+          className={classNames('tooltipNetworkPhase', propertyName)}
           aria-hidden="true"
           style={{
             marginLeft: startPositionPercent + '%',
             marginRight: 100 - startPositionPercent - durationPercent + '%',
-            opacity: opacity === 0 ? undefined : opacity,
           }}
         />
       </React.Fragment>
