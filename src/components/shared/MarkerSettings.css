@@ -51,4 +51,5 @@
   margin-left: 4px;
   color: var(--clickable-foreground-color);
   content: '';
+  forced-color-adjust: none;
 }
